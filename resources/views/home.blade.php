@@ -12,7 +12,7 @@
 </head>
 <body>
   
-
+h1
 
     <!-- <a href="{{ url('home.com') }}">Home</a>
     <a href="{{ url('about.com') }}">About</a>
@@ -36,7 +36,7 @@
 {{-- <h1 style="text-align: center;"> WELCOME</h1> --}}
 
 
-
+<P>zamy ganteng</P>
 
 <h1 style="text-align: center;"> {{$text_judul}} </h1>
 
