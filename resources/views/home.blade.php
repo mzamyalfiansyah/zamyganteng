@@ -36,7 +36,7 @@ h1
 {{-- <h1 style="text-align: center;"> WELCOME</h1> --}}
 
 
-<P>zamy ganteng</P>
+{{-- <P>zamy ganteng</P> --}}
 
 <h1 style="text-align: center;"> {{$text_judul}} </h1>
 
