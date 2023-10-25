@@ -10,7 +10,7 @@
 </head>
 <body>
 
-
+    @include('layout.navbarpetugas')
     
 @extends('layout.app')
 

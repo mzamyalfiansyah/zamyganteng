@@ -20,32 +20,29 @@
                     <ul class="navbar-nav">
                      
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('home') }}">Home</a>
+                            <a class="nav-link" href="{{ url('home-petugas') }}">Home</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('login') }}">Login</a>
-                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('about') }}">About</a>
                         </li>
 
-                       
-
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('data_masyarakat') }}">Masyarakat</a>
+                        </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('logout') }}">Logout</a>
+                            <a class="nav-link" href="{{ url('data_petugas') }}">Petugas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/petugas/logout') }}">Logout</a>
                         </li>
 
                     </ul>
 
-                    <ul class="navbar-nav" style="margin-left: 53%;">
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ url('buat-laporan') }}">Buat Laporan</a>
-                        </li>
-                    </ul>
+                    
                     
                 </div>
         </div>

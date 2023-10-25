@@ -223,8 +223,7 @@
                 @method("POST")
                 @csrf
               
-                  <label for="id_petugas"></label>
-                  <input type="text" class="zocial-dribbble" placeholder="Enter your ID" name="id_petugas" />
+             
 
                   <label for="nama_petugas"></label>
                   <input type="text" class="zocial-dribbble" placeholder="Enter your Name"  name="nama_petugas"/>

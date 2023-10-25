@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\pengaduancontroller;
 use App\Http\Controllers\masyarakatcontroller;
 use App\Http\Controllers\logincontroller;
+use App\Http\Controllers\loginpetugascontroller;
+
 
 
 
@@ -32,7 +34,7 @@ Route::get('/coba', function(){
 
 
 
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
 
     
@@ -44,7 +46,7 @@ Route::POST('/buat_laporan', [pengaduancontroller::class, 'proses_pengaduan']);
 
 Route::get('/delet/{id}', [pengaduancontroller::class, 'hapus']);
 
-Route::get('/detail/{id}', [pengaduancontroller::class, 'detail_']);
+Route::get('/detail/masyarakat/{id}', [pengaduancontroller::class, 'detailmasyarakat']);
 
 
 
@@ -64,13 +66,12 @@ Route::POST('/tambah', [masyarakatcontroller::class, 'proses_tambah']);
 
 Route::get('/data_petugas', [masyarakatcontroller::class, 'tampilkan']);
 
-Route::get('/tambahkan_petugas', [masyarakatcontroller::class, 'tambah_petugas']);
-
-Route::POST('/tambah_petugas', [masyarakatcontroller::class, 'proses_petugas']);
 
 
 
-// });
+
+});
+
 
 
 
@@ -84,7 +85,50 @@ Route::get('/daftar', [logincontroller::class, 'daftar']);
 
 Route::post('/daftar', [logincontroller::class, 'proses_daftar']);
 
-Route::get('logout', [logincontroller::class, 'proses_logout']);
+Route::get('/logout', [logincontroller::class, 'proses_logout']);
+
+
+
+
+
+Route::middleware(['petugas'])->group(function () {
+
+    Route::get('/home-petugas', [loginpetugascontroller::class, 'petugashome']);
+
+    Route::get('/detail/{id}', [loginpetugascontroller::class, 'detail_']);
+
+    Route::get('/update_/{id}', [loginpetugascontroller::class, 'update_data']);
+
+    Route::post('/update_/{id}', [loginpetugascontroller::class, 'proses_update']);
+
+
+
+    
+    Route::get('/data_masyarakat', [loginpetugascontroller::class, 'tampil']);
+
+    Route::get('/data_petugas', [loginpetugascontroller::class, 'tampilkan']);
+
+    
+
+
+});
+
+
+Route::get('/login-petugas', [loginpetugascontroller::class,'loginpetugas']);
+
+Route::post('/proses-petugas', [loginpetugascontroller::class,'proseslogin']);
+
+
+Route::get('/tambahkan_petugas', [masyarakatcontroller::class, 'tambah_petugas']);
+
+Route::POST('/tambah_petugas', [masyarakatcontroller::class, 'proses_petugas']);
+
+Route::get('/petugas/logout', [loginpetugascontroller::class, 'proseslogout']);
+
+
+
+
+
 
 
 

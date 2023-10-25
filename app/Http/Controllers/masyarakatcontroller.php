@@ -39,7 +39,7 @@ class masyarakatcontroller extends Controller
             'nik' => $isi_nik,
             'nama' => $isi_nama,
             'username' => $isi_username,
-            'password' => $isi_password,
+            'password' => hash::make($isi_password),
             'telp' => $isi_telp
         ]);
         return redirect('/data_masyarakat');
@@ -69,7 +69,7 @@ class masyarakatcontroller extends Controller
 
     function proses_petugas(request $request){
         
-        $isi_id = $request->id_petugas;
+        $isi_id = $request->id;
         $isi_nama = $request->nama_petugas;
         $isi_username = $request->username;
         $isi_password = $request->password;
@@ -77,14 +77,14 @@ class masyarakatcontroller extends Controller
         $isi_level = $request->level;
     
         DB::table('petugas')->insert([
-            'id_petugas' => $isi_id,
+            'id' => $isi_id,
             'nama_petugas' => $isi_nama,
             'username' => $isi_username,
-            'password' => $isi_password,
+            'password' => hash::make($isi_password),
             'telp' => $isi_telp,
             'level' => "petugas"
         ]);
-        return redirect('/data_petugas');
+        return redirect('/login-petugas');
     }
 
 

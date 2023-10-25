@@ -6,26 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="bs/css/bootstrap.min.css">
+
     <title>Home</title>
 
   
 </head>
 <body>
-  
 
-
-    <!-- <a href="{{ url('home.com') }}">Home</a>
-    <a href="{{ url('about.com') }}">About</a>
-    <a href="{{ url('login.com') }}">Login</a> -->
-
-
-<!-- navbar -->
-  
-@include('layout.navbar')
-
-@extends('layout.app')
-
-@section('content')
+    @include('layout.navbarpetugas')
 
 <br>
 <br>
@@ -35,10 +25,9 @@
 
 {{-- <h1 style="text-align: center;"> WELCOME</h1> --}}
 
-<h5>NIK : {{Auth::user()->nik}} </h5>
-<h5>Username : {{Auth::user()->username}}</h5>
 
-<h1 style="text-align: center;"> {{$text_judul}} </h1>
+
+
 
 <br>
 <br>
@@ -52,6 +41,7 @@
                     <th scope="col">Tanggal</th>
                     <th scope="col">Isi Laporan</th>
                     <th scope="col">Foto</th>
+                    <th scope="col">Status</th>
                     
                    
                     <th scope="col">Opsi</th>
@@ -59,19 +49,19 @@
             </thead>
             <tbody>
 
-            @foreach($tampil_laporan as $pengaduan)
+            @foreach($tampil_laporan as $laporan)
 
                 <tr>
                     
-                    <td scope="col" > {{$pengaduan->tgl_pengaduan}} </td>
-                    <td style="max-width: 300px;" scope="col" > {{$pengaduan->isi_laporan}} </td>
-                    <td  scope="col" ><img style="border-radius: 7px;" src="{{asset("storage/image/".$pengaduan->foto)}}" width="100px"></td>
-                    
+                    <td scope="col" > {{$laporan->tgl_pengaduan}} </td>
+                    <td style="max-width: 300px;" scope="col" > {{$laporan->isi_laporan}} </td>
+                    <td  scope="col" ><img style="border-radius: 7px;" src="{{asset("storage/image/".$laporan->foto)}}" width="100px"></td>
+                    <td style="max-width: 300px;" scope="col" > {{$laporan->status}} </td>
                  
                     
                         <td>  
-                            <a class="btn btn-primary" href="/detail/masyarakat/{{$pengaduan->id_pengaduan}}">Detail</a>
-                            <a class="btn btn-danger" href="delet/{{$pengaduan->id_pengaduan}}" >x</a>
+                            <a class="btn btn-primary" href="/detail/{{$laporan->id_pengaduan}}">Detail</a>
+                            <a class="btn btn-danger" href="hapus/{{$laporan->id_pengaduan}}" >x</a>
                         </td>
                         {{-- <td> <a class="btn btn-primary" href="/update/{{$pengaduan->id_pengaduan}}">update</a></td> --}}
                 </tr>
@@ -83,8 +73,6 @@
    
 </div>
 
-@endsection
-   
 
 
 </body>

@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
     <title>Detail Pengaduan</title>
 
     
@@ -18,13 +21,13 @@
 
 <!-- navbar -->
   
-@include('layout.navbar')
+
+
+@include('layout.navbarpetugas')
 
 @extends('layout.app')
 
 @section('content')
-
-
 <br>
 <br>
 
@@ -58,20 +61,29 @@
                 <td>{{$laporan->id_pengaduan}}</td>
                 <td>{{$laporan->nik}}</td>
                 <td>{{$laporan->tgl_pengaduan}}</td>
-                <td>{{$laporan->status}}</td>
+                
                 
 
                 
 
-                <form action="{{url("/update/$laporan->id_pengaduan")}}" method="POST">
+                <form action="{{url("/update_/$laporan->id_pengaduan")}}" method="POST">
 
                     @method("POST")
                     @csrf
             
-                  
+                    <td>
+                        <select {{$laporan->status}} name="status">
+                          <option>Proses</option>
+                          <option>Selesai</option>
+                          
+                        </select>
+                    </td>
+                        
+                        
                     <td>
                         <label for="isi_laporan"></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="isi_laporan" required>{{$laporan->isi_laporan}}</textarea></td>
+                       {{$laporan->isi_laporan}}
+                    </td>
                     <td>
                         <ul class="navbar-nav" style="margin-left: 58%;">
                             <li class="nav-item">
@@ -114,8 +126,8 @@
 
 
 
-
 @endsection
+
    
 
 

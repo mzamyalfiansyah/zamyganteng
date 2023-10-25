@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    @include('layout.navbar')
+   
 
     <div class="container">
         @yield('content')

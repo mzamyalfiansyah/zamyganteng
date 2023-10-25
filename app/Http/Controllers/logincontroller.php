@@ -16,13 +16,13 @@ class logincontroller extends Controller
 
     public function proses_login(Request $request){
 
-        $judul = "login gagal";
+
 
         $datalogin = $request->only("username", "password");
             if(Auth::attempt($datalogin)){
                 return redirect('home');
             }else{
-                return redirect('login', ['text_judul' => $judul]);
+                return redirect('login')->with("error", "Username atau password salah");
 
             }
     }
@@ -31,7 +31,7 @@ class logincontroller extends Controller
 
 
     public function proses_logout(){
-       Auth::logout;
+       Auth::logout();
        return redirect('login');
     }
 

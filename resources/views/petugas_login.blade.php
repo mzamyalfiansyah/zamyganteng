@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
 
@@ -18,7 +17,7 @@ body {
   color: #2b3e51;
 }
 
-h2 {
+h4 {
   font-weight: 300;
   text-align: center;
 }
@@ -172,19 +171,23 @@ input[type="submit"]:hover {
 
 <body>
 
+
+  
 <br>
 <br>
 <br>
 
+@if(session("error")) 
+  <h4>Username atau password salah</h4> 
+@endif
+
   <div id="login-form-wrap">
-    <h2>Login</h2>
-      <form action={{url("/login")}} method="POST">
+    <h4>Login (Petugas/Admin)</h4>
+      <form action={{url("proses-petugas")}} method="POST">
         @method('POST')
         @csrf
 
-        @if(session("error"))
-          <h6 style="color: red;">Username atau password salah</h6>
-        @endif
+       
           <p>
             <input type="text" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
           </p>
@@ -192,14 +195,13 @@ input[type="submit"]:hover {
             <input type="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
           </p>
           <p>
-            <input type="submit" id="/login" value="Login">
+            <input type="submit"  value="Login">
           </p>
       </form>
   <div id="create-account-wrap">
-    <p>Don't have account? <a href="/daftar">Create Account</a><p>
+    <p>Don't have account? <a href="/tambahkan_petugas">Create Account</a><p>
   </div>
 </div>
-
 
 
   

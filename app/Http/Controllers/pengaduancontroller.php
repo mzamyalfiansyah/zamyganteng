@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\pengaduan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class pengaduancontroller extends Controller
 {
@@ -17,7 +18,7 @@ class pengaduancontroller extends Controller
         
         $pengaduan = pengaduan::all();
 
-        return view('home', ['text_judul' => $judul, 'tampil_pengaduan' => $pengaduan]);
+        return view('home', ['text_judul' => $judul, 'tampil_laporan' => $pengaduan]);
     }
 
     function buat_laporan(){
@@ -32,6 +33,9 @@ class pengaduancontroller extends Controller
 
     function proses_pengaduan(request $request){
 
+
+        
+
         $nama_foto = $request->foto->getClientOriginalName();
 
         $request->validate([
@@ -43,7 +47,8 @@ class pengaduancontroller extends Controller
         $isi_pengaduan = $request->isi_laporan;
 
         DB::table('pengaduan')->insert([
-            'nik' => 1933,
+        
+            'nik' => Auth::user()->nik,
             'isi_laporan' => $isi_pengaduan,
             'foto' => $request->foto->getClientOriginalName(),
             'tgl_pengaduan' => date('Y-m-d'),
@@ -65,21 +70,21 @@ class pengaduancontroller extends Controller
 
 
 
-
-
-
-
-
-
-
-
-    function detail_($id){
+    function detailmasyarakat($id){
 
 
         $laporan = DB::table('pengaduan')->where('id_pengaduan', '=', $id)->get();
         
         return view('detail', ["data" => $laporan]);
     }
+
+
+
+
+
+
+
+   
 
     function update_data($id){
         $pengaduan = DB::table('pengaduan')->where('id_pengaduan', '=', $id)->first();
